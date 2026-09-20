@@ -9,3 +9,4 @@ sandbox/
 .tasks/
 .schedule.json
 .mailboxes/
+.worktrees/
