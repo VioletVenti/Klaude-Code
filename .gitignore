@@ -7,3 +7,4 @@ sandbox/
 .archive/
 .memory/
 .tasks/
+.schedule.json
