@@ -8,3 +8,4 @@ sandbox/
 .memory/
 .tasks/
 .schedule.json
+.mailboxes/
