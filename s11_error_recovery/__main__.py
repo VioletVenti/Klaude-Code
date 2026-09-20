@@ -1,0 +1,33 @@
+"""Interactive entry: `python -m s01_agent_loop`. Reads prompts until q/EOF."""
+
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
+from .agent import AgentState, make_client, run_agent
+
+
+def main() -> None:
+    print("s11 error recovery — type a task, q to quit")
+    client = make_client()
+    state = AgentState()
+
+    while True:
+        try:
+            prompt = input("s11 >> ").strip()
+        except (EOFError, KeyboardInterrupt):
+            break
+        if not prompt or prompt.lower() in ("q", "exit"):
+            break
+
+        run_agent(prompt, state, client)
+        last = state.messages[-1]
+        if last["role"] == "assistant":
+            print(last["content"], "\n")
+
+
+if __name__ == "__main__":
+    main()
