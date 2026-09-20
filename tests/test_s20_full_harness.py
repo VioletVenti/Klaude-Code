@@ -93,7 +93,7 @@ def test_slow_work_returns_a_placeholder_immediately():
                 tool_calls=[
                     FakeToolCall(
                         "c1", "run_bash",
-                        json.dumps({"command": "echo late > bg.txt", "run_in_background": True}),
+                        json.dumps({"command": "echo late-arrives", "run_in_background": True}),
                     ),
                     FakeToolCall("c2", "write_file", json.dumps({"path": "fg.txt", "content": "fast"})),
                 ]
