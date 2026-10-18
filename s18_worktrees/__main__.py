@@ -1,4 +1,4 @@
-"""Interactive entry: `python -m s14_scheduler`. Reads prompts until q/EOF."""
+"""Interactive entry: `python -m s18_worktrees`. Reads prompts until q/EOF."""
 
 try:
     from dotenv import load_dotenv

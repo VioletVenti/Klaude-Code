@@ -1,4 +1,4 @@
-"""Interactive entry: `python -m s01_agent_loop`. Reads prompts until q/EOF."""
+"""Interactive entry: `python -m s02_tool_use`. Reads prompts until q/EOF."""
 
 try:
     from dotenv import load_dotenv
