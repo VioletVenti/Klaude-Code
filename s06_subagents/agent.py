@@ -10,11 +10,10 @@ import os
 import re
 from dataclasses import dataclass, field
 
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 
 from . import hooks, toolbox
 
-DEFAULT_BASE_URL = "https://hub.oaifree.com/v1"
 DEFAULT_MODEL = "glm-5.3"
 MAX_TURNS = 24
 MAX_OUTPUT_TOKENS = 8192
@@ -50,9 +49,15 @@ class AgentState:
 
 
 def make_client() -> OpenAI:
+    base_url = os.environ.get("KLAUDE_BASE_URL")
+    if not base_url:
+        raise OpenAIError(
+            "KLAUDE_BASE_URL is not set: point it at an OpenAI-compatible endpoint "
+            "(see .env.example)"
+        )
     return OpenAI(
         api_key=os.environ.get("KLAUDE_API_KEY") or os.environ.get("OPENAI_API_KEY"),
-        base_url=os.environ.get("KLAUDE_BASE_URL", DEFAULT_BASE_URL),
+        base_url=base_url,
     )
 
 

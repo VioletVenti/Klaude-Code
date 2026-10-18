@@ -47,7 +47,7 @@ Requires Python 3.11+ and any OpenAI-compatible chat-completions endpoint that s
 ```bash
 python -m venv .venv
 .venv/bin/pip install -r requirements.txt
-cp .env.example .env        # then fill in KLAUDE_API_KEY (and BASE_URL / MODEL)
+cp .env.example .env        # then fill in KLAUDE_API_KEY and KLAUDE_BASE_URL
 
 .venv/bin/python -m s20_full_harness   # the full harness
 .venv/bin/python -m s01_agent_loop     # or any earlier stage
@@ -60,7 +60,7 @@ Type a task at the prompt; `q` quits.
 | Variable | Purpose |
 |----------|---------|
 | `KLAUDE_API_KEY` | API key for the endpoint (required) |
-| `KLAUDE_BASE_URL` | OpenAI-compatible base URL |
+| `KLAUDE_BASE_URL` | Base URL of the OpenAI-compatible endpoint (required) |
 | `KLAUDE_MODEL` / `KLAUDE_FALLBACK_MODEL` | Primary model and the fallback used during error recovery |
 | `KLAUDE_WORKDIR` | Workspace the file tools are jailed to |
 | `KLAUDE_MEMORY_DIR`, `KLAUDE_TASKS_DIR`, `KLAUDE_MAILBOX_DIR`, `KLAUDE_WORKTREES_DIR`, `KLAUDE_ARCHIVE_DIR`, `KLAUDE_SKILLS_DIR`, `KLAUDE_SCHEDULE_FILE` | Override where each mechanism keeps its on-disk state |
@@ -71,7 +71,7 @@ Type a task at the prompt; `q` quits.
 .venv/bin/python -m pytest -q
 ```
 
-153 tests across all 20 stages. The model client is stubbed, so the suite runs offline, and every stage's file tools are jailed to a temporary sandbox. During development, a stage was committed only after its tests were green and an end-to-end run against a live model exited cleanly.
+155 tests across all 20 stages. The model client is stubbed, so the suite runs offline, and every stage's file tools are jailed to a temporary sandbox. During development, a stage was committed only after its tests were green and an end-to-end run against a live model exited cleanly.
 
 ## Repository layout
 

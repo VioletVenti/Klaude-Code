@@ -2,8 +2,17 @@
 
 import json
 
+import pytest
+from openai import OpenAIError
+
 from s01_agent_loop import bash_tool
-from s01_agent_loop.agent import AgentState, _assistant_message, _clean_text, run_agent
+from s01_agent_loop.agent import (
+    AgentState,
+    _assistant_message,
+    _clean_text,
+    make_client,
+    run_agent,
+)
 
 
 class FakeFunction:
@@ -119,3 +128,15 @@ def test_reasoning_content_is_dropped():
 def test_think_tags_are_stripped():
     assert _clean_text("<think>internal</think>visible") == "visible"
     assert _clean_text(None) == ""
+
+
+def test_base_url_is_required(monkeypatch):
+    monkeypatch.delenv("KLAUDE_BASE_URL", raising=False)
+    with pytest.raises(OpenAIError, match="KLAUDE_BASE_URL"):
+        make_client()
+
+
+def test_base_url_comes_from_env(monkeypatch):
+    monkeypatch.setenv("KLAUDE_BASE_URL", "http://localhost:8000/v1")
+    monkeypatch.setenv("KLAUDE_API_KEY", "test")
+    assert str(make_client().base_url).startswith("http://localhost:8000/v1")
