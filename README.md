@@ -1,8 +1,8 @@
-# Klaude
+# Klaude Code
 
-A Claude Code–style terminal coding agent, built from scratch in Python — one harness mechanism at a time.
+A Claude Code–style terminal coding agent, built from scratch in Python — one harness mechanism at a time. Inside the harness the agent calls itself Klaude.
 
-Klaude grows across 20 cumulative stages. Each stage is a complete, runnable agent that adds exactly one mechanism on top of the previous one, so the history of the harness can be read stage by stage: from a 100-line loop with a single `bash` tool to a full harness with permissions, hooks, context compaction, cross-session memory, background jobs, cron, multi-agent teams, git-worktree isolation and MCP tools (28 tools in the final stage).
+Klaude Code grows across 20 cumulative stages. Each stage is a complete, runnable agent that adds exactly one mechanism on top of the previous one, so the history of the harness can be read stage by stage: from a 100-line loop with a single `bash` tool to a full harness with permissions, hooks, context compaction, cross-session memory, background jobs, cron, multi-agent teams, git-worktree isolation and MCP tools (28 tools in the final stage).
 
 The core idea stays fixed throughout: **the loop belongs to the model, the mechanisms belong to the harness.** The agent loop never changes shape. Every capability plugs in around it.
 
@@ -85,8 +85,10 @@ Stages are deliberately self-contained rather than importing from each other, so
 
 ## Acknowledgements
 
-The stage outline follows the [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) course ([learn.shareai.run](https://learn.shareai.run/)). Klaude is an independent implementation.
+The stage outline follows the [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) course ([learn.shareai.run](https://learn.shareai.run/)). Klaude Code is an independent implementation.
 
 ## License
 
 [MIT](LICENSE)
+
+Klaude Code is a personal learning project. It is not affiliated with, endorsed by or sponsored by Anthropic. "Claude" and "Claude Code" are trademarks of Anthropic.
